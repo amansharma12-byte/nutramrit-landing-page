@@ -7,7 +7,7 @@ interface FormData {
   phone: string;
   targetWeight: string;
   healthIssue: string;
-  pincode: string;
+  address: string;
 }
 
 interface QuizAnswers {
@@ -25,7 +25,7 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
     phone: "",
     targetWeight: "",
     healthIssue: "",
-    pincode: ""
+    address: ""
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -38,13 +38,6 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
       return;
     }
     
-    // Pincode: only allow digits, max 6
-    if (name === "pincode") {
-      const digitsOnly = value.replace(/\D/g, "").slice(0, 6);
-      setFormData(prev => ({ ...prev, [name]: digitsOnly }));
-      return;
-    }
-    
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -53,12 +46,12 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
     formData.name.trim().length > 0 &&
     formData.phone.length === 10 &&
     formData.targetWeight.length > 0 &&
-    formData.pincode.length === 6;
+    formData.address.trim().length > 0;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.phone || !formData.targetWeight || !formData.pincode) {
+    if (!formData.name || !formData.phone || !formData.targetWeight || !formData.address) {
       toast({
         title: "Error",
         description: "कृपया सभी फ़ील्ड भरें",
@@ -90,6 +83,7 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
         },
         body: JSON.stringify({
           ...formData,
+          address: formData.address,
           quiz_lakshya: quizAnswers?.goal ?? "",
           quiz_umar: quizAnswers?.age ?? "",
           quiz_vajan: quizAnswers?.weight ?? "",
@@ -195,15 +189,14 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
 
 
         <div>
-          <label className="block text-sm font-medium text-foreground mb-1">📮 पिनकोड *</label>
-          <input
-            type="text"
-            name="pincode"
-            value={formData.pincode}
+          <label className="block text-sm font-medium text-foreground mb-1">🏠 पूरा पता (Address) *</label>
+          <textarea
+            name="address"
+            value={formData.address}
             onChange={handleChange}
-            placeholder="6 अंकों का पिनकोड"
-            maxLength={6}
-            className="w-full p-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="घर नंबर, गली, शहर, राज्य, पिनकोड"
+            rows={3}
+            className="w-full p-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
             required
           />
         </div>
