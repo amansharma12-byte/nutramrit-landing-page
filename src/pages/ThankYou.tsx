@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Phone, Home } from "lucide-react";
+import { CheckCircle, Home } from "lucide-react";
 
 const ThankYou = () => {
   const location = useLocation();
@@ -96,13 +96,6 @@ const ThankYou = () => {
 
           {/* Action Buttons */}
           <div className="space-y-3">
-            <a href="tel:+919560520081" className="w-full block">
-              <Button variant="outline" className="w-full py-6 text-lg">
-                <Phone className="w-5 h-5 mr-2" />
-                अभी Call करें
-              </Button>
-            </a>
-
             <Button
               variant="ghost"
               className="w-full"

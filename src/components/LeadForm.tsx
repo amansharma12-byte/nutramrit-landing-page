@@ -13,7 +13,6 @@ interface FormData {
 interface QuizAnswers {
   goal?: string;
   age?: string;
-  height?: string;
   weight?: string;
 }
 
@@ -93,7 +92,6 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
           ...formData,
           quiz_lakshya: quizAnswers?.goal ?? "",
           quiz_umar: quizAnswers?.age ?? "",
-          quiz_lambai: quizAnswers?.height ?? "",
           quiz_vajan: quizAnswers?.weight ?? "",
           timestamp: new Date().toISOString(),
           product: "Nutramrit Shape N Slim & Slim N Fit",
@@ -121,15 +119,13 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
       <h2 className="text-2xl font-bold text-center text-foreground">🩺 Doctor से FREE Consultation बुक करें</h2>
 
       <div className="bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 p-4 rounded-lg border-2 border-green-300 dark:border-green-700">
-        <div className="text-center space-y-2">
-          <p className="text-sm text-muted-foreground line-through">MRP- ₹4000</p>
-          <p className="text-3xl font-bold text-success">₹1999 Only</p>
-          <span className="inline-block bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-bold px-4 py-1 rounded-full">
-            🎉 50% OFF
-          </span>
-          <div className="flex items-center justify-center gap-3 mt-3 text-xs text-muted-foreground">
-            <span>✅ FSSAI Certified</span>
-            <span>✅ 100% Natural</span>
+        <div className="text-center space-y-3">
+          <p className="text-lg font-bold text-success">🩺 FREE Doctor Consultation शामिल है</p>
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+            <span className="bg-primary/10 text-primary font-semibold px-3 py-1 rounded-full">✅ FSSAI Certified</span>
+            <span className="bg-primary/10 text-primary font-semibold px-3 py-1 rounded-full">✅ 100% Natural</span>
+            <span className="bg-primary/10 text-primary font-semibold px-3 py-1 rounded-full">🚚 Free Delivery</span>
+            <span className="bg-primary/10 text-primary font-semibold px-3 py-1 rounded-full">💳 Cash on Delivery</span>
           </div>
         </div>
       </div>
@@ -172,7 +168,6 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
             required
           >
             <option value="">चुनें...</option>
-            <option value="5-10kg">5-10 kg</option>
             <option value="10-15kg">10-15 kg</option>
             <option value="15-20kg">15-20 kg</option>
             <option value="20kg+">20 kg से ज़्यादा</option>

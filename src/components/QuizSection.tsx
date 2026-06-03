@@ -7,7 +7,6 @@ interface QuizState {
   answers: {
     goal?: string;
     age?: string;
-    height?: string;
     weight?: string;
   };
   isChecking: boolean;
@@ -29,7 +28,7 @@ const QuizSection = () => {
       step: prev.step + 1
     }));
 
-    if (quiz.step === 4) {
+    if (quiz.step === 3) {
       setQuiz(prev => ({ ...prev, isChecking: true }));
       setTimeout(() => {
         setQuiz(prev => ({ ...prev, isChecking: false, isApproved: true }));
@@ -111,24 +110,11 @@ const QuizSection = () => {
 
               {quiz.step === 3 && (
                 <div className="space-y-3">
-                  <h4 className="font-bold text-foreground text-lg">Step 3: आपकी लंबाई (Height)</h4>
+                  <h4 className="font-bold text-foreground text-lg">Step 3: आपका वजन (Weight)</h4>
                   <div className="space-y-3">
-                    <QuizButton onClick={() => handleAnswer('height', '<4ft')}>📏 Less than 4 ft</QuizButton>
-                    <QuizButton onClick={() => handleAnswer('height', '4-5ft')}>📏 4 ft - 5 ft</QuizButton>
-                    <QuizButton onClick={() => handleAnswer('height', '5-6ft')}>📏 5 ft - 6 ft</QuizButton>
-                    <QuizButton onClick={() => handleAnswer('height', '>6ft')}>📏 Above 6 ft</QuizButton>
-                  </div>
-                </div>
-              )}
-
-              {quiz.step === 4 && (
-                <div className="space-y-3">
-                  <h4 className="font-bold text-foreground text-lg">Step 4: आपका वजन (Weight)</h4>
-                  <div className="space-y-3">
-                    <QuizButton onClick={() => handleAnswer('weight', '<40kg')}>⚖️ Less than 40 kg</QuizButton>
-                    <QuizButton onClick={() => handleAnswer('weight', '40-60kg')}>⚖️ 40 - 60 kg</QuizButton>
                     <QuizButton onClick={() => handleAnswer('weight', '60-80kg')}>⚖️ 60 - 80 kg</QuizButton>
-                    <QuizButton onClick={() => handleAnswer('weight', '>80kg')}>⚖️ Above 80 kg</QuizButton>
+                    <QuizButton onClick={() => handleAnswer('weight', '80-100kg')}>⚖️ 80 - 100 kg</QuizButton>
+                    <QuizButton onClick={() => handleAnswer('weight', '>100kg')}>⚖️ Above 100 kg</QuizButton>
                   </div>
                 </div>
               )}

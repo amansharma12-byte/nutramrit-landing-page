@@ -9,7 +9,6 @@ import QuizSection from "@/components/QuizSection";
 import SocialProof from "@/components/SocialProof";
 import Reviews from "@/components/Reviews";
 import StickyOrderButton from "@/components/StickyOrderButton";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 
@@ -32,7 +31,6 @@ const Index = () => {
         </div>
       </main>
       <Footer />
-      <WhatsAppButton />
       <StickyOrderButton />
     </>
   );
