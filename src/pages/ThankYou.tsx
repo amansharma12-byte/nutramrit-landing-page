@@ -72,16 +72,7 @@ const ThankYou = () => {
 
           {/* Product Info */}
           <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-4 border border-primary/20">
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="font-bold text-foreground">Nutramrit Shape N Slim & Slim N Fit</p>
-                <p className="text-sm text-muted-foreground line-through">MRP: ₹4000</p>
-              </div>
-              <div className="text-right">
-                <p className="text-2xl font-bold text-success">₹1999</p>
-                <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-full">50% OFF</span>
-              </div>
-            </div>
+            <p className="font-bold text-foreground text-center">Nutramrit Shape N Slim & Slim N Fit</p>
           </div>
 
           {/* Next Steps */}
