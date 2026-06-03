@@ -72,26 +72,24 @@ const LeadForm = ({ quizAnswers }: { quizAnswers?: QuizAnswers }) => {
     setIsSubmitting(true);
 
     try {
-      // Google Sheets Web App URL - User needs to replace this with their own
-      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbx5e-hpjZE8V064kubXbBuXw61a3vaxlA4c6qTcgdYO95gPlgyIiq5yXJDlHVdIVfYeKg/exec";
-      
-      await fetch(GOOGLE_SHEET_URL, {
-        method: "POST",
+      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxznRP2THN9IagjoDNjd8CgSQUalhISvsebNNu6q6V1FZjI_dCtlN1q6DTKlD5h59kM-w/exec";
+
+      const params = new URLSearchParams({
+        name: formData.name,
+        phone: formData.phone,
+        targetWeight: formData.targetWeight,
+        healthIssue: formData.healthIssue,
+        address: formData.address,
+        quiz_lakshya: quizAnswers?.goal ?? "",
+        quiz_umar: quizAnswers?.age ?? "",
+        quiz_vajan: quizAnswers?.weight ?? "",
+        product: "Nutramrit Shape N Slim & Slim N Fit",
+        source: window.location.href
+      });
+
+      await fetch(`${GOOGLE_SHEET_URL}?${params.toString()}`, {
+        method: "GET",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          address: formData.address,
-          quiz_lakshya: quizAnswers?.goal ?? "",
-          quiz_umar: quizAnswers?.age ?? "",
-          quiz_vajan: quizAnswers?.weight ?? "",
-          timestamp: new Date().toISOString(),
-          product: "Nutramrit Shape N Slim & Slim N Fit",
-          price: "₹1999",
-          source: window.location.href
-        })
       });
 
       // Redirect to Thank You page with form data
